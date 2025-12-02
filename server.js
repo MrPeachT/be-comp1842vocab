@@ -32,8 +32,11 @@ mongoose.connect(MONGO_URI, {
 const wordRoutes = require('./routes/wordRoutes');
 wordRoutes(app);
 
-const authRoutes = require('./routes/authRoutes');   
-authRoutes(app);                                     
+const authRoutes = require('./routes/authRoutes');
+authRoutes(app);
+
+const adminRoutes = require('./routes/adminRoutes');
+app.use('/admin', adminRoutes);
 
 const uploadDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadDir)) {
